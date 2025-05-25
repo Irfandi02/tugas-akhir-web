@@ -20,10 +20,10 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Agen
-            $table->string('title');
+            $table->string('nama');
             $table->text('description')->nullable();
-            $table->decimal('price', 15, 2);
-            $table->string('address');
+            $table->decimal('harga', 15, 2);
+            $table->string('alamat');
             $table->enum('type', ['rumah', 'tanah', 'ruko']);
             $table->enum('status', ['tersedia', 'terjual'])->default('tersedia');
             $table->string('image')->nullable();
@@ -37,9 +37,9 @@ return new class extends Migration
     Schema::create('transactions', function (Blueprint $table) {
         $table->id();
         $table->foreignId('property_id')->constrained('properties')->onDelete('cascade');
-        $table->foreignId('buyer_id')->constrained('users')->onDelete('cascade');
+        $table->foreignId('pembeli_id')->constrained('users')->onDelete('cascade');
         $table->date('transaction_date');
-        $table->decimal('amount', 15, 2);
+        $table->decimal('total', 15, 2);
         $table->enum('status', ['pending', 'success', 'canceled'])->default('pending');
         $table->timestamps();
     });
