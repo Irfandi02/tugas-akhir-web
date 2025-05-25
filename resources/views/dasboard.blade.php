@@ -1,5 +1,4 @@
 @extends('layout.master')
-
 @section('content')
 <!-- Page Wrapper -->
 <div id="wrapper">p
